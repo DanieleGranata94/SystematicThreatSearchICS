@@ -16,7 +16,7 @@
 - [Usage](#usage)
 - [Ethical Considerations](#ethical-considerations)
 - [Contributing](#contributing)
-- [Threat Mapping (MITRE ATT&CK for ICS)](#️-threat-mapping-mitre-attck-for-ics)
+- [PoC Threat Mapping (MITRE ATT&CK for ICS)](#️-poc-threat-mapping-mitre-attck-for-ics)
 - [License](#license)
 
 ## 🎯 Overview
@@ -50,12 +50,14 @@ Each entry in the catalogue includes:
 | **Target Asset** | ICS component affected |
 | **Attack Vector** | How the attack is carried out |
 | **Impact** | Effect on confidentiality, integrity, availability |
-| **MITRE ATT&CK Mapping** | Corresponding ICS technique(s) |
-| **Notes** | Context-specific mapping notes |
+| **CAPEC Mapping** | Corresponding CAPEC pattern(s) |
+| **Notes** | Context-specific notes |
 
-### MITRE ATT&CK for ICS Mapping
+### CAPEC Mapping
 
-All threats are mapped to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques. The mapping is available in two formats:
+All threats in the catalogue are mapped to [CAPEC (Common Attack Pattern Enumeration and Classification)](https://capec.mitre.org/) patterns. CAPEC provides a standardized taxonomy of attack patterns that describes how adversaries exploit weaknesses in systems.
+
+The mapping is available in two formats:
 
 - 📊 **Spreadsheet**: [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx)
 - 📄 **CSV**: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
@@ -74,7 +76,7 @@ SystematicThreatSearchICS/
 ├── SLR/                          # Systematic Literature Review materials
 ├── ThreatCatalogue/              # Threat taxonomy and categorization
 │   ├── ICSThreatCatalogue.xlsx  # Full threat catalogue (19 threats)
-│   └── threat_mapping.csv       # MITRE ATT&CK for ICS threat mapping
+│   └── threat_mapping.csv       # CAPEC-based threat mapping (with PoC MITRE ATT&CK examples)
 ├── Results/                      # Attack planning and threat models
 │   ├── ICS2_attack_plan.xlsx    
 │   └── ICS2_threat_model.xlsx   
@@ -333,9 +335,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Note**: This software is for educational and authorized security testing only.
 
-## �️ Threat Mapping (MITRE ATT&CK for ICS)
+## 🗺️ PoC Threat Mapping (MITRE ATT&CK for ICS)
 
-The following table maps identified threats to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques, aligned with PLC attack vectors.
+> **Note**: This mapping is **not part of the Threat Catalogue**. The catalogue uses [CAPEC](https://capec.mitre.org/) as its classification framework. The table below maps the **19 catalogue threats** to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques solely to provide a reference aligned with PLC-level attack vectors, as a support for the proof-of-concept experiments.
+
 The full mapping is also available as a CSV file: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
 
 | ID | Threat Name | Primary Technique | Secondary Technique | Notes |

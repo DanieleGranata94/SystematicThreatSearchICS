@@ -1,20 +1,20 @@
-Threat_ID,Threat_Name,Primary_Technique,Secondary_Technique,Notes
-T1,Firmware Modification,T0857,,T0843 applies if firmware/logic is loaded onto the PLC
-T2,Malicious Firmware Updates,T0857,T0862,
-T3,Exploitation of Known Vulnerabilities,T0866,T0859,T0859 applies if the exploit leads to use of valid credentials/accounts
-T4,Manipulating PLC Logic,T0834,T0843,
-T5,Main Program Block Removal,T0834,T0814,
-T6,Suppression/Deactivation of Alarms,T0878,,
-T7,Deletion/Removal of Alarms,T0878,T0834,T0834 applies if the alarm is removed by acting on PLC logic
-T8,Alarm Forgery,T0878,T0834,T0834 applies if achieved via PLC logic modification
-T9,Input Manipulation,T0834,,Mapping depends on experimental case; may involve PLC process control/manipulation techniques
-T10,Memory Layout Exploitation,T0888,,
-T11,Credentials from Password Stores,T0847,,
-T12,Process Manipulation,T0834,,Possible association with impairment/process impact techniques
-T13,Misconfiguration,T0842,T0851,Depends on operational detail; applies when threat involves alteration of configurations/parameters
-T14,Mode Disruption,T0814,,
-T15,Physical Damage,T0834,,T0834 as technical cause on PLC; physical effect on the process
-T16,Loss of Device Control,T0814,T0859,T0859 applies if attacker changes passwords/credentials
-T45,Network Ransomware,T0821,,Applies if data encryption/inhibition is the effect on PLC; validate against specific technique details
-T46,ADC Attack,T0834,,Precise mapping depends on how the ADC attack is described; may involve PLC-specific input/process manipulation
-T47,DoS Attack,T0814,,
+Threat_ID,Threat_Name,CAPEC_Mapping,ATT&CK_Primary_Technique,ATT&CK_Secondary_Technique,Notes
+T1,Firmware Modification,CAPEC-458,T0857,T0843,ATT&CK T0843 applies if firmware/logic is loaded onto the PLC (PoC reference only)
+T2,Malicious Firmware Updates,CAPEC-458,T0857,T0862,ATT&CK mapping for PoC reference only
+T3,Exploitation of Known Vulnerabilities,CAPEC-116,T0866,T0859,ATT&CK T0859 applies if the exploit leads to use of valid credentials/accounts (PoC reference only)
+T4,Manipulating PLC Logic,CAPEC-549,T0834,T0843,ATT&CK mapping for PoC reference only
+T5,Main Program Block Removal,CAPEC-549,T0834,T0814,ATT&CK mapping for PoC reference only
+T6,Suppression/Deactivation of Alarms,CAPEC-571,T0878,,ATT&CK mapping for PoC reference only
+T7,Deletion/Removal of Alarms,CAPEC-571,T0878,T0834,ATT&CK T0834 applies if the alarm is removed by acting on PLC logic (PoC reference only)
+T8,Alarm Forgery,CAPEC-571,T0878,T0834,ATT&CK T0834 applies if achieved via PLC logic modification (PoC reference only)
+T9,Input Manipulation,CAPEC-594,T0834,,ATT&CK mapping depends on experimental case (PoC reference only)
+T10,Memory Layout Exploitation,CAPEC-123,T0888,,ATT&CK mapping for PoC reference only
+T11,Credentials from Password Stores,CAPEC-560,T0847,,ATT&CK mapping for PoC reference only
+T12,Process Manipulation,CAPEC-549,T0834,,ATT&CK mapping for PoC reference only; possible association with impairment/process impact techniques
+T13,Misconfiguration,CAPEC-212,T0842,T0851,ATT&CK mapping depends on operational detail (PoC reference only)
+T14,Mode Disruption,CAPEC-549,T0814,,ATT&CK mapping for PoC reference only
+T15,Physical Damage,CAPEC-549,T0834,,ATT&CK T0834 as technical cause on PLC; physical effect on process (PoC reference only)
+T16,Loss of Device Control,CAPEC-549,T0814,T0859,ATT&CK T0859 applies if attacker changes passwords/credentials (PoC reference only)
+T45,Network Ransomware,CAPEC-549,T0821,,ATT&CK applies if data encryption/inhibition is the effect on PLC (PoC reference only)
+T46,ADC Attack,CAPEC-624,T0834,,ATT&CK precise mapping depends on how the ADC attack is described (PoC reference only)
+T47,DoS Attack,CAPEC-125,T0814,,ATT&CK mapping for PoC reference only
