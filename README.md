@@ -9,12 +9,14 @@
 
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
+- [Threat Catalogue](#-threat-catalogue)
 - [Tools](#tools)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Ethical Considerations](#ethical-considerations)
 - [Contributing](#contributing)
+- [Threat Mapping (MITRE ATT&CK for ICS)](#️-threat-mapping-mitre-attck-for-ics)
 - [License](#license)
 
 ## 🎯 Overview
@@ -24,6 +26,41 @@ This repository contains proof-of-concept security testing tools for Industrial 
 **Included Tools:**
 - **ModbusInjector.py** - Man-in-the-Middle attack tool for Modbus/TCP protocol
 - **replay_from_capture.py** - Traffic replay tool for industrial robot systems
+
+## 🗂️ Threat Catalogue
+
+The Threat Catalogue is one of the main contributions of this repository. It provides a structured collection of security threats specific to ICS environments, developed through a Systematic Literature Review (SLR) of academic and industrial sources.
+
+The catalogue is stored in [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx) and covers threats affecting the following asset classes:
+
+- **PLC (Programmable Logic Controller)** – logic manipulation, firmware attacks, mode disruption
+- **SCADA/HMI** – process manipulation, credential theft, misconfiguration
+- **Network** – Man-in-the-Middle, DoS, ransomware, ARP-based attacks
+- **Field Devices** – sensor input manipulation, physical damage, ADC attacks
+- **Robot Systems** – replay attacks, loss of control, authentication weaknesses
+
+### Catalogue Structure
+
+Each entry in the catalogue includes:
+
+| Field | Description |
+|-------|-------------|
+| **Threat ID** | Unique identifier (e.g., T1, T9, T47) |
+| **Threat Name** | Descriptive name of the attack |
+| **Target Asset** | ICS component affected |
+| **Attack Vector** | How the attack is carried out |
+| **Impact** | Effect on confidentiality, integrity, availability |
+| **MITRE ATT&CK Mapping** | Corresponding ICS technique(s) |
+| **Notes** | Context-specific mapping notes |
+
+### MITRE ATT&CK for ICS Mapping
+
+All threats are mapped to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques. The mapping is available in two formats:
+
+- 📊 **Spreadsheet**: [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx)
+- 📄 **CSV**: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
+
+The catalogue currently includes **19 threats** covering attack categories such as firmware manipulation, logic alteration, alarm suppression, credential theft, process manipulation, denial of service, and replay attacks.
 
 ## 📁 Repository Structure
 
@@ -36,6 +73,8 @@ SystematicThreatSearchICS/
 │
 ├── SLR/                          # Systematic Literature Review materials
 ├── ThreatCatalogue/              # Threat taxonomy and categorization
+│   ├── ICSThreatCatalogue.xlsx  # Full threat catalogue (19 threats)
+│   └── threat_mapping.csv       # MITRE ATT&CK for ICS threat mapping
 ├── Results/                      # Attack planning and threat models
 │   ├── ICS2_attack_plan.xlsx    
 │   └── ICS2_threat_model.xlsx   
@@ -294,7 +333,36 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Note**: This software is for educational and authorized security testing only.
 
-## 📚 Resources
+## �️ Threat Mapping (MITRE ATT&CK for ICS)
+
+The following table maps identified threats to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques, aligned with PLC attack vectors.
+The full mapping is also available as a CSV file: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
+
+| ID | Threat Name | Primary Technique | Secondary Technique | Notes |
+|----|-------------|-------------------|---------------------|-------|
+| T1 | Firmware Modification | T0857 | T0843 | T0843 applies if firmware/logic is loaded onto the PLC |
+| T2 | Malicious Firmware Updates | T0857 | T0862 | |
+| T3 | Exploitation of Known Vulnerabilities | T0866 | T0859 | T0859 applies if the exploit leads to use of valid credentials/accounts |
+| T4 | Manipulating PLC Logic | T0834 | T0843 | |
+| T5 | Main Program Block Removal | T0834 | T0814 | |
+| T6 | Suppression/Deactivation of Alarms | T0878 | | |
+| T7 | Deletion/Removal of Alarms | T0878 | T0834 | T0834 applies if the alarm is removed by acting on PLC logic |
+| T8 | Alarm Forgery | T0878 | T0834 | T0834 applies if achieved via PLC logic modification |
+| T9 | Input Manipulation | T0834 | | Mapping depends on experimental case; may involve PLC process control/manipulation techniques |
+| T10 | Memory Layout Exploitation | T0888 | | |
+| T11 | Credentials from Password Stores | T0847 | | |
+| T12 | Process Manipulation | T0834 | | Possible association with impairment/process impact techniques |
+| T13 | Misconfiguration | T0842 | T0851 | Depends on operational detail; applies when threat involves alteration of configurations/parameters |
+| T14 | Mode Disruption | T0814 | | |
+| T15 | Physical Damage | T0834 | | T0834 as technical cause on PLC; physical effect on the process |
+| T16 | Loss of Device Control | T0814 | T0859 | T0859 applies if attacker changes passwords/credentials |
+| T45 | Network Ransomware | T0821 | | Applies if data encryption/inhibition is the effect on PLC; validate against specific technique details |
+| T46 | ADC Attack | T0834 | | Precise mapping depends on how the ADC attack is described; may involve PLC-specific input/process manipulation |
+| T47 | DoS Attack | T0814 | | |
+
+> **Mapping Methodology**: Threats are mapped to ATT&CK for ICS techniques based on the primary attack vector against PLC systems. Where multiple techniques apply, the principal technique is listed first. Context-dependent mappings require validation against specific experimental scenarios.
+
+## �📚 Resources
 
 ### ICS Security Standards
 - **IEC 62443** - Industrial automation security

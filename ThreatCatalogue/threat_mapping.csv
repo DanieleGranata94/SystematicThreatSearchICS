@@ -1,0 +1,20 @@
+Threat_ID,Threat_Name,Primary_Technique,Secondary_Technique,Notes
+T1,Firmware Modification,T0857,,T0843 applies if firmware/logic is loaded onto the PLC
+T2,Malicious Firmware Updates,T0857,T0862,
+T3,Exploitation of Known Vulnerabilities,T0866,T0859,T0859 applies if the exploit leads to use of valid credentials/accounts
+T4,Manipulating PLC Logic,T0834,T0843,
+T5,Main Program Block Removal,T0834,T0814,
+T6,Suppression/Deactivation of Alarms,T0878,,
+T7,Deletion/Removal of Alarms,T0878,T0834,T0834 applies if the alarm is removed by acting on PLC logic
+T8,Alarm Forgery,T0878,T0834,T0834 applies if achieved via PLC logic modification
+T9,Input Manipulation,T0834,,Mapping depends on experimental case; may involve PLC process control/manipulation techniques
+T10,Memory Layout Exploitation,T0888,,
+T11,Credentials from Password Stores,T0847,,
+T12,Process Manipulation,T0834,,Possible association with impairment/process impact techniques
+T13,Misconfiguration,T0842,T0851,Depends on operational detail; applies when threat involves alteration of configurations/parameters
+T14,Mode Disruption,T0814,,
+T15,Physical Damage,T0834,,T0834 as technical cause on PLC; physical effect on the process
+T16,Loss of Device Control,T0814,T0859,T0859 applies if attacker changes passwords/credentials
+T45,Network Ransomware,T0821,,Applies if data encryption/inhibition is the effect on PLC; validate against specific technique details
+T46,ADC Attack,T0834,,Precise mapping depends on how the ADC attack is described; may involve PLC-specific input/process manipulation
+T47,DoS Attack,T0814,,
