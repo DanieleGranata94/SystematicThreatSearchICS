@@ -62,7 +62,7 @@ The mapping is available in two formats:
 - 📊 **Spreadsheet**: [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx)
 - 📄 **CSV**: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
 
-The catalogue currently includes **19 threats** covering attack categories such as firmware manipulation, logic alteration, alarm suppression, credential theft, process manipulation, denial of service, and replay attacks.
+The catalogue currently includes **26 threats** covering attack categories such as firmware manipulation, logic alteration, alarm suppression, credential theft, process manipulation, denial of service, replay attacks, command injection, measurement data deception, and remote code execution.
 
 ## 📁 Repository Structure
 
@@ -75,7 +75,7 @@ SystematicThreatSearchICS/
 │
 ├── SLR/                          # Systematic Literature Review materials
 ├── ThreatCatalogue/              # Threat taxonomy and categorization
-│   ├── ICSThreatCatalogue.xlsx  # Full threat catalogue (19 threats)
+│   ├── ICSThreatCatalogue.xlsx  # Full threat catalogue (26 threats)
 │   └── threat_mapping.csv       # CAPEC-based threat mapping (with PoC MITRE ATT&CK examples)
 ├── Results/                      # Attack planning and threat models
 │   ├── ICS2_attack_plan.xlsx    
@@ -337,33 +337,47 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🗺️ PoC Threat Mapping (MITRE ATT&CK for ICS)
 
-> **Note**: This mapping is **not part of the Threat Catalogue**. The catalogue uses [CAPEC](https://capec.mitre.org/) as its classification framework. The table below maps the **19 catalogue threats** to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques solely to provide a reference aligned with PLC-level attack vectors, as a support for the proof-of-concept experiments.
+> **Note**: This mapping is **not part of the Threat Catalogue**. The catalogue uses [CAPEC](https://capec.mitre.org/) as its classification framework. The table below maps the **26 catalogue threats** to [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) techniques solely to provide a reference aligned with PLC-level and SCADA/HMI attack vectors, as a support for the proof-of-concept experiments.
 
 The full mapping is also available as a CSV file: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
 
-| ID | Threat Name | Primary Technique | Secondary Technique | Notes |
-|----|-------------|-------------------|---------------------|-------|
-| T1 | Firmware Modification | T0857 | T0843 | T0843 applies if firmware/logic is loaded onto the PLC |
-| T2 | Malicious Firmware Updates | T0857 | T0862 | |
-| T3 | Exploitation of Known Vulnerabilities | T0866 | T0859 | T0859 applies if the exploit leads to use of valid credentials/accounts |
-| T4 | Manipulating PLC Logic | T0834 | T0843 | |
-| T5 | Main Program Block Removal | T0834 | T0814 | |
-| T6 | Suppression/Deactivation of Alarms | T0878 | | |
-| T7 | Deletion/Removal of Alarms | T0878 | T0834 | T0834 applies if the alarm is removed by acting on PLC logic |
-| T8 | Alarm Forgery | T0878 | T0834 | T0834 applies if achieved via PLC logic modification |
-| T9 | Input Manipulation | T0834 | | Mapping depends on experimental case; may involve PLC process control/manipulation techniques |
-| T10 | Memory Layout Exploitation | T0888 | | |
-| T11 | Credentials from Password Stores | T0847 | | |
-| T12 | Process Manipulation | T0834 | | Possible association with impairment/process impact techniques |
-| T13 | Misconfiguration | T0842 | T0851 | Depends on operational detail; applies when threat involves alteration of configurations/parameters |
-| T14 | Mode Disruption | T0814 | | |
-| T15 | Physical Damage | T0834 | | T0834 as technical cause on PLC; physical effect on the process |
-| T16 | Loss of Device Control | T0814 | T0859 | T0859 applies if attacker changes passwords/credentials |
-| T45 | Network Ransomware | T0821 | | Applies if data encryption/inhibition is the effect on PLC; validate against specific technique details |
-| T46 | ADC Attack | T0834 | | Precise mapping depends on how the ADC attack is described; may involve PLC-specific input/process manipulation |
-| T47 | DoS Attack | T0814 | | |
+### PLC Threats (Asset: Engineering Workstation / Controller)
 
-> **Mapping Methodology**: Threats are mapped to ATT&CK for ICS techniques based on the primary attack vector against PLC systems. Where multiple techniques apply, the principal technique is listed first. Context-dependent mappings require validation against specific experimental scenarios.
+| ID | Threat Name | CAPEC | Primary Technique | Secondary Technique | Notes |
+|----|-------------|-------|-------------------|---------------------|-------|
+| T1 | Firmware Modification | CAPEC-458 | T0857 | T0843 | T0843 applies if firmware/logic is loaded onto the PLC |
+| T2 | Malicious Firmware Updates | CAPEC-458 | T0857 | T0862 | |
+| T3 | Exploitation of Known Vulnerabilities | CAPEC-116 | T0866 | T0859 | T0859 applies if the exploit leads to use of valid credentials/accounts |
+| T4 | Manipulating PLC Logic | CAPEC-549 | T0834 | T0843 | |
+| T5 | Main Program Block Removal | CAPEC-549 | T0834 | T0814 | |
+| T9 | Input Manipulation | CAPEC-594 | T0834 | | Mapping depends on experimental case |
+| T10 | Memory Layout Exploitation | CAPEC-123 | T0888 | | |
+| T14 | Mode Disruption | CAPEC-549 | T0814 | | |
+| T15 | Physical Damage | CAPEC-549 | T0834 | | T0834 as technical cause on PLC; physical effect on the process |
+| T16 | Loss of Device Control | CAPEC-549 | T0814 | T0859 | T0859 applies if attacker changes passwords/credentials |
+| T46 | ADC Attack | CAPEC-624 | T0834 | | Precise mapping depends on how the ADC attack is described |
+| T47 | DoS Attack | CAPEC-125 | T0814 | | |
+
+### SCADA/HMI Threats (Asset: A0003 – Human-Machine Interface)
+
+| ID | Threat Name | CAPEC | Primary Technique | Secondary Technique | Notes |
+|----|-------------|-------|-------------------|---------------------|-------|
+| T6 | Suppression/Deactivation of Alarms | CAPEC-571 | T0878 | | |
+| T7 | Deletion/Removal of Alarms | CAPEC-571 | T0878 | T0834 | T0834 applies if the alarm is removed by acting on PLC logic |
+| T8 | Alarm Forgery | CAPEC-571 | T0878 | T0834 | T0834 applies if achieved via PLC logic modification |
+| T11 | Credentials from Password Stores | CAPEC-560 | T0847 | T0859 | Targets SCADA/HMI credential storage |
+| T12 | Process Manipulation | CAPEC-549 | T0834 | | Executed via SCADA/HMI interface |
+| T13 | Misconfiguration | CAPEC-212 | T0842 | T0851 | Depends on operational detail |
+| T17 | Injection of Malicious Software | CAPEC-549 | T0862 | T0873 | T0873 applies if via project file infection |
+| T18 | Command Injection | CAPEC-88 | T0855 | | Unauthorized commands via insecure SCADA protocols e.g. Modbus; lack of integrity validation |
+| T19 | Measurement Data Deception | CAPEC-148 | T0832 | | Fake sensor/process data to HMI to manipulate operator decisions |
+| T20 | Message Spoofing | CAPEC-194 | T0856 | | Falsifying sender identity in SCADA communications |
+| T21 | Inadequate Supervisory Controls | CAPEC-212 | T0842 | T0878 | Weak SCADA monitoring fails to detect/prevent abnormal operations |
+| T22 | Unauthorized Access | CAPEC-560 | T0859 | T0866 | Unauthorized users accessing/modifying SCADA operation or logic |
+| T23 | Remote Code Execution | CAPEC-242 | T0853 | T0866 | Full control of SCADA monitoring/command functions |
+| T45 | Network Ransomware | CAPEC-549 | T0821 | | Data encryption/inhibition affecting SCADA |
+
+> **Mapping Methodology**: Threats are mapped to ATT&CK for ICS techniques based on the primary attack vector against the target asset. Where multiple techniques apply, the principal technique is listed first. SCADA/HMI threats are aligned with Asset A0003 (Human-Machine Interface) in the ATT&CK for ICS asset taxonomy. Context-dependent mappings require validation against specific experimental scenarios.
 
 ## �📚 Resources
 

@@ -1,20 +1,27 @@
-Threat_ID,Threat_Name,CAPEC_Mapping,ATT&CK_Primary_Technique,ATT&CK_Secondary_Technique,Notes
-T1,Firmware Modification,CAPEC-458,T0857,T0843,ATT&CK T0843 applies if firmware/logic is loaded onto the PLC (PoC reference only)
-T2,Malicious Firmware Updates,CAPEC-458,T0857,T0862,ATT&CK mapping for PoC reference only
-T3,Exploitation of Known Vulnerabilities,CAPEC-116,T0866,T0859,ATT&CK T0859 applies if the exploit leads to use of valid credentials/accounts (PoC reference only)
-T4,Manipulating PLC Logic,CAPEC-549,T0834,T0843,ATT&CK mapping for PoC reference only
-T5,Main Program Block Removal,CAPEC-549,T0834,T0814,ATT&CK mapping for PoC reference only
-T6,Suppression/Deactivation of Alarms,CAPEC-571,T0878,,ATT&CK mapping for PoC reference only
-T7,Deletion/Removal of Alarms,CAPEC-571,T0878,T0834,ATT&CK T0834 applies if the alarm is removed by acting on PLC logic (PoC reference only)
-T8,Alarm Forgery,CAPEC-571,T0878,T0834,ATT&CK T0834 applies if achieved via PLC logic modification (PoC reference only)
-T9,Input Manipulation,CAPEC-594,T0834,,ATT&CK mapping depends on experimental case (PoC reference only)
-T10,Memory Layout Exploitation,CAPEC-123,T0888,,ATT&CK mapping for PoC reference only
-T11,Credentials from Password Stores,CAPEC-560,T0847,,ATT&CK mapping for PoC reference only
-T12,Process Manipulation,CAPEC-549,T0834,,ATT&CK mapping for PoC reference only; possible association with impairment/process impact techniques
-T13,Misconfiguration,CAPEC-212,T0842,T0851,ATT&CK mapping depends on operational detail (PoC reference only)
-T14,Mode Disruption,CAPEC-549,T0814,,ATT&CK mapping for PoC reference only
-T15,Physical Damage,CAPEC-549,T0834,,ATT&CK T0834 as technical cause on PLC; physical effect on process (PoC reference only)
-T16,Loss of Device Control,CAPEC-549,T0814,T0859,ATT&CK T0859 applies if attacker changes passwords/credentials (PoC reference only)
-T45,Network Ransomware,CAPEC-549,T0821,,ATT&CK applies if data encryption/inhibition is the effect on PLC (PoC reference only)
-T46,ADC Attack,CAPEC-624,T0834,,ATT&CK precise mapping depends on how the ADC attack is described (PoC reference only)
-T47,DoS Attack,CAPEC-125,T0814,,ATT&CK mapping for PoC reference only
+Threat_ID,Threat_Name,Target_Asset,CAPEC_Mapping,ATT&CK_Primary_Technique,ATT&CK_Secondary_Technique,Notes
+T1,Firmware Modification,PLC,CAPEC-458,T0857,T0843,T0843 applies if firmware/logic is loaded onto the PLC (PoC reference only)
+T2,Malicious Firmware Updates,PLC,CAPEC-458,T0857,T0862,PoC reference only
+T3,Exploitation of Known Vulnerabilities,PLC/SCADA,CAPEC-116,T0866,T0859,T0859 applies if the exploit leads to use of valid credentials/accounts (PoC reference only)
+T4,Manipulating PLC Logic,PLC,CAPEC-549,T0834,T0843,PoC reference only
+T5,Main Program Block Removal,PLC,CAPEC-549,T0834,T0814,PoC reference only
+T6,Suppression/Deactivation of Alarms,SCADA/HMI,CAPEC-571,T0878,,PoC reference only
+T7,Deletion/Removal of Alarms,SCADA/HMI,CAPEC-571,T0878,T0834,T0834 applies if alarm is removed by acting on PLC logic (PoC reference only)
+T8,Alarm Forgery,SCADA/HMI,CAPEC-571,T0878,T0834,T0834 applies if achieved via PLC logic modification (PoC reference only)
+T9,Input Manipulation,PLC/Field Device,CAPEC-594,T0834,,Mapping depends on experimental case (PoC reference only)
+T10,Memory Layout Exploitation,PLC,CAPEC-123,T0888,,PoC reference only
+T11,Credentials from Password Stores,SCADA/HMI,CAPEC-560,T0847,T0859,Targets SCADA/HMI credential storage (A0003); PoC reference only
+T12,Process Manipulation,SCADA/HMI,CAPEC-549,T0834,,Executed via SCADA/HMI interface (A0003); PoC reference only
+T13,Misconfiguration,SCADA/HMI,CAPEC-212,T0842,T0851,Targets SCADA/HMI configuration (A0003); mapping depends on operational detail (PoC reference only)
+T14,Mode Disruption,PLC,CAPEC-549,T0814,,PoC reference only
+T15,Physical Damage,PLC/Field Device,CAPEC-549,T0834,,T0834 as technical cause on PLC; physical effect on process (PoC reference only)
+T16,Loss of Device Control,PLC,CAPEC-549,T0814,T0859,T0859 applies if attacker changes passwords/credentials (PoC reference only)
+T17,Injection of Malicious Software,SCADA/HMI,CAPEC-549,T0862,T0873,Malicious software targeting SCADA systems (A0003); T0873 applies if via project file infection
+T18,Command Injection,SCADA/HMI,CAPEC-88,T0855,,Injecting unauthorized commands via insecure SCADA protocols (e.g. Modbus); lack of integrity validation (A0003)
+T19,Measurement Data Deception,SCADA/HMI,CAPEC-148,T0832,,Fake sensor/process data presented to HMI operators to manipulate decisions (A0003)
+T20,Message Spoofing,SCADA/HMI,CAPEC-194,T0856,,Falsifying sender identity in SCADA communications to impersonate trusted sources (A0003)
+T21,Inadequate Supervisory Controls,SCADA/HMI,CAPEC-212,T0842,T0878,Weak SCADA monitoring fails to detect/prevent abnormal operations (A0003)
+T22,Unauthorized Access,SCADA/HMI,CAPEC-560,T0859,T0866,Unauthorized users accessing and modifying SCADA operation or logic (A0003)
+T23,Remote Code Execution,SCADA/HMI,CAPEC-242,T0853,T0866,Full control of SCADA monitoring/command functions; can override process or block commands (A0003)
+T45,Network Ransomware,Network/SCADA,CAPEC-549,T0821,,Targets network and SCADA systems (A0003); applies if data encryption/inhibition affects SCADA (PoC reference only)
+T46,ADC Attack,Field Device,CAPEC-624,T0834,,Precise mapping depends on how the ADC attack is described (PoC reference only)
+T47,DoS Attack,Network/PLC,CAPEC-125,T0814,,PoC reference only
