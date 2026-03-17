@@ -1,0 +1,141 @@
+// ROBOTS
+
+CREATE 
+
+//HW
+(network:Network:LAN {component_id: '1', name: 'Net', type: 'Network'}),
+(Workstation:HW:PC {component_id: '2', name: 'Workstation', type: 'HW.PC'}),
+(Rasp1:HW:SOC {component_id: '3', name: 'Rasp1', type: 'HW.SOC'}),
+(Rasp2:HW:SOC {component_id: '4', name: 'Rasp2', type: 'HW.SOC'}),
+(PLC1:HW:PLC {component_id: '20', name: 'PLC1', type: 'HW.PLC'}),
+(RaspSCADA:HW:PLC {component_id: '39', name: 'RaspSCADA', type: 'HW.HMI'}),
+(RaspVirtualPLC:HW:SOC {component_id: '40', name: 'RaspVirtualPLC', type: 'HW.SOC'}),
+
+//OS
+(OS1:SystemLayer:OS {component_id: '5', name: 'OS1', type: 'SystemLayer.OS'}),
+(OS2:SystemLayer:OS {component_id: '6', name: 'OS2', type: 'SystemLayer.OS'}),
+(OS3:SystemLayer:OS {component_id: '7', name: 'OS3', type: 'SystemLayer.OS'}),
+(FirmwarePLC:SystemLayer:Firmware {component_id: '8', name: 'FirmwarePLC', type: 'SystemLayer.Firmware'}),
+(OS4:SystemLayer:OS {component_id: '9', name: 'OS4', type: 'SystemLayer.OS'}),
+(OS5:SystemLayer:OS {component_id: '21', name: 'OS5', type: 'SystemLayer.OS'}),
+
+//Services and Applications
+(NyrioService1:Service:App {component_id: '10', name: 'NyrioService1', type: 'Service.App'}),
+(NyrioService2:Service:App {component_id: '11', name: 'NyrioService2', type: 'Service.App'}),
+(NyrioStudio:Service:App {component_id: '12', name: 'NyrioStudio', type: 'Service.App'}),
+(SysmacStudio:Service:App {component_id: '22', name: 'SysmacStudio', type: 'Service.App'}),
+(SSHService1:Service:App {component_id: '13', name: 'SSH Service1', type: 'Service.SSH'}),
+(SSHService2:Service:App {component_id: '14', name: 'SSH Service2', type: 'Service.SSH'}),
+(ServerModbus:Service:SCADA {component_id: '15', name: 'Server Modbus', type: 'Service.SCADA'}),
+(ScadaBR:Service:SCADA {component_id: '16', name: 'ScadaBR', type: 'Service.SCADA'}),
+(VirtualPLCApp:Service:App {component_id: '41', name: 'VirtualPLCApp', type: 'Service.App'}),
+(PLCWebService:Service:App {component_id: '42', name: 'PLCWebService', type: 'Service.Web'}),
+
+//Sensors and Actuators dei robot
+(IRSensor1:HW:Sensor {component_id: '17', name: 'IRSensor1', type: 'HW.Sensor'}),
+(Webcam1:HW:Sensor {component_id: '19', name: 'Webcam', type: 'HW.Sensor'}),
+(Conveyor1:HW:Actuator {component_id: '18', name: 'Conveyor1', type: 'HW.Actuator'}),
+(IRSensor2:HW:Sensor {component_id: '23', name: 'IRSensor2', type: 'HW.Sensor'}),
+(Webcam2:HW:Sensor {component_id: '25', name: 'Webcam2', type: 'HW.Sensor'}),
+(Conveyor2:HW:Actuator {component_id: '24', name: 'Conveyor2', type: 'HW.Actuator'}),
+
+//Sensors and Actuators PLC
+(PositionSensor1:HW:Sensor {component_id: '26', name: 'PositionSensor', type: 'HW.Sensor'}),
+(PositionSensor2:HW:Sensor {component_id: '27', name: 'PositionSensor2', type: 'HW.Sensor'}),
+(PositionSensor3:HW:Sensor {component_id: '28', name: 'PositionSensor3', type: 'HW.Sensor'}),
+(PositionSensor4:HW:Sensor {component_id: '29', name: 'PositionSensor4', type: 'HW.Sensor'}),
+(Actuator1:HW:Actuator {component_id: '30', name: 'Actuator1', type: 'HW.Actuator'}),
+(Actuator2:HW:Actuator {component_id: '31', name: 'Actuator2', type: 'HW.Actuator'}),
+(Actuator3:HW:Actuator {component_id: '32', name: 'Actuator3', type: 'HW.Actuator'}),
+(Actuator4:HW:Actuator {component_id: '33', name: 'Actuator4', type: 'HW.Actuator'}),
+(Actuator5:HW:Actuator {component_id: '34', name: 'Actuator5', type: 'HW.Actuator'}),
+(PumpFan:HW:Actuator {component_id: '35', name: 'PumpFan', type: 'HW.Actuator'}),
+(TempSensor:HW:Sensor {component_id: '36', name: 'TempSensor', type: 'HW.Sensor'}),
+
+
+
+//Relationships
+
+//connects
+(network)-[:connects]->(Workstation),
+(network)-[:connects]->(Rasp1),
+(network)-[:connects]->(Rasp2),
+(network)-[:connects]->(PLC1),
+(network)-[:connects]->(RaspSCADA),
+(network)-[:connects]->(RaspVirtualPLC),
+
+//hosts L1
+(Rasp1)-[:hosts]->(OS1),
+(Rasp2)-[:hosts]->(OS2),
+(Workstation)-[:hosts]->(OS3),
+(PLC1)-[:hosts]->(FirmwarePLC),
+(RaspSCADA)-[:hosts]->(OS4),
+(RaspVirtualPLC)-[:hosts]->(OS5),
+
+//L1 sensori
+(Rasp1)-[:hosts]->(IRSensor1),
+(Rasp1)-[:hosts]->(Webcam1),
+(Rasp1)-[:hosts]->(Conveyor1),
+(Rasp1)-[:hosts]->(TempSensor),
+(Rasp1)-[:hosts]->(IRSensor1),
+(Rasp1)-[:hosts]->(PumpFan),
+
+
+(Rasp2)-[:hosts]->(IRSensor2),
+(Rasp2)-[:hosts]->(Webcam2),
+(Rasp2)-[:hosts]->(Conveyor2),
+
+(PLC1)-[:hosts]->(PositionSensor1),
+(PLC1)-[:hosts]->(PositionSensor2),
+(PLC1)-[:hosts]->(PositionSensor3),
+(PLC1)-[:hosts]->(PositionSensor4),
+(PLC1)-[:hosts]->(Actuator1),
+(PLC1)-[:hosts]->(Actuator2),
+(PLC1)-[:hosts]->(Actuator3),
+(PLC1)-[:hosts]->(Actuator4),
+(PLC1)-[:hosts]->(Actuator5),
+
+//hosts L2
+(OS1)-[:hosts]->(NyrioService1),
+(OS1)-[:hosts]->(SSHService1),
+(OS2)-[:hosts]->(NyrioService2),
+(OS2)-[:hosts]->(SSHService2),
+
+(OS3)-[:hosts]->(NyrioStudio),
+(OS3)-[:hosts]->(SysmacStudio),
+
+(FirmwarePLC)-[:hosts]->(ServerModbus),
+(FirmwarePLC)-[:hosts]->(PLCWebService),
+
+(OS4)-[:hosts]->(ScadaBR),
+(OS5)-[:hosts]->(VirtualPLCApp),
+
+//uses
+(NyrioService1)-[:uses]->(IRSensor1),
+(NyrioService1)-[:uses]->(Webcam1),
+(NyrioService1)-[:uses]->(Conveyor1),
+
+(NyrioService2)-[:uses]->(IRSensor2),
+(NyrioService2)-[:uses]->(Webcam2),
+(NyrioService2)-[:uses]->(Conveyor2),
+
+(PLCWebService)-[:uses]->(PositionSensor1),
+(PLCWebService)-[:uses]->(PositionSensor2),
+(PLCWebService)-[:uses]->(PositionSensor3),
+(PLCWebService)-[:uses]->(PositionSensor4),
+(PLCWebService)-[:uses]->(Actuator1),
+(PLCWebService)-[:uses]->(Actuator2),
+(PLCWebService)-[:uses]->(Actuator3),
+(PLCWebService)-[:uses]->(Actuator4),
+(PLCWebService)-[:uses]->(Actuator5),
+
+(NyrioStudio)-[:uses {protocol: 'tcp'}]->(NyrioService1),
+(NyrioStudio)-[:uses {protocol: 'tcp'}]->(NyrioService2),
+(SysmacStudio)-[:uses {protocol: 'tls'}]->(PLCWebService),
+(ScadaBR)-[:uses {protocol: 'modbus'}]->(ServerModbus),
+(ScadaBR)-[:uses {protocol: 'modbus'}]->(VirtualPLCApp),
+(VirtualPLCApp)-[:uses {protocol: 'modbus'}]->(ServerModbus),
+(VirtualPLCApp)-[:uses {protocol: 'modbus'}]->(PumpFan),
+(VirtualPLCApp)-[:uses {protocol: 'modbus'}]->(TempSensor)
+
+
