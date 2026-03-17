@@ -16,7 +16,6 @@
 - [Usage](#usage)
 - [Ethical Considerations](#ethical-considerations)
 - [Contributing](#contributing)
-- [PoC Threat Mapping (MITRE ATT&CK for ICS)](#️-poc-threat-mapping-mitre-attck-for-ics)
 - [License](#license)
 
 ## 🎯 Overview
