@@ -38,53 +38,11 @@ The catalogue is stored in [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCat
 - **Field Devices** – sensor input manipulation, physical damage, ADC attacks
 - **Robot Systems** – replay attacks, loss of control, authentication weaknesses
 
-### Catalogue Structure
-
-Each entry in the catalogue includes:
-
-| Field | Description |
-|-------|-------------|
-| **Threat ID** | Unique identifier (e.g., T1, T9, T47) |
-| **Threat Name** | Descriptive name of the attack |
-| **Target Asset** | ICS component affected |
-| **Attack Vector** | How the attack is carried out |
-| **Impact** | Effect on confidentiality, integrity, availability |
-| **CAPEC Mapping** | Corresponding CAPEC pattern(s) |
-| **Notes** | Context-specific notes |
-
-### CAPEC Mapping
-
-All threats in the catalogue are mapped to [CAPEC (Common Attack Pattern Enumeration and Classification)](https://capec.mitre.org/) patterns. CAPEC provides a standardized taxonomy of attack patterns that describes how adversaries exploit weaknesses in systems.
-
-The mapping is available in two formats:
-
 - 📊 **Spreadsheet**: [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx)
-- 📄 **CSV**: [`ThreatCatalogue/threat_mapping.csv`](ThreatCatalogue/threat_mapping.csv)
 
-The catalogue currently includes **26 threats** covering attack categories such as firmware manipulation, logic alteration, alarm suppression, credential theft, process manipulation, denial of service, replay attacks, command injection, measurement data deception, and remote code execution.
 
-## 📁 Repository Structure
+               # This file
 
-```
-SystematicThreatSearchICS/
-│
-├── Scripts/                      # Security testing tools
-│   ├── ModbusInjector.py        # Modbus/TCP MITM attack tool
-│   └── replay_from_capture.py   # Robot command replay tool
-│
-├── SLR/                          # Systematic Literature Review materials
-├── ThreatCatalogue/              # Threat taxonomy and categorization
-│   ├── ICSThreatCatalogue.xlsx  # Full threat catalogue (26 threats)
-│   └── threat_mapping.csv       # CAPEC-based threat mapping (with PoC MITRE ATT&CK examples)
-├── Results/                      # Attack planning and threat models
-│   ├── ICS2_attack_plan.xlsx    
-│   └── ICS2_threat_model.xlsx   
-│
-├── .env.example                  # Configuration template
-├── requirements.txt              # Python dependencies
-├── check_config.py               # Configuration verification script
-└── README.md                     # This file
-```
 
 ## Threat modelling (`threat_modelling`)
 
