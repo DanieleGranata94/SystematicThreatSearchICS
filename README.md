@@ -86,6 +86,22 @@ SystematicThreatSearchICS/
 └── README.md                     # This file
 ```
 
+## Threat modelling (`threat_modelling`)
+
+The `threat_modelling/` folder contains an example threat-modelling workflow (Pennet example) used in the research:
+
+- `threat_modelling/threat_modeller.py` — example script that reads a system model and generates a threat model.
+- `threat_modelling/input/` — example inputs (e.g. `ics.macm`).
+- `threat_modelling/output/` — generated outputs (e.g. `ics_threat_model.csv`).
+
+Quick run:
+```bash
+python threat_modelling/threat_modeller.py
+```
+
+Note: this is an illustrative/example implementation for research and teaching. Use it in an isolated environment and with explicit authorization. See `requirements.txt` for dependencies.
+
+
 ## ️ Tools
 
 ### 1. ModbusInjector.py
