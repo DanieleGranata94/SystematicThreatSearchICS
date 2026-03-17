@@ -41,8 +41,6 @@ The catalogue is stored in [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCat
 - 📊 **Spreadsheet**: [`ThreatCatalogue/ICSThreatCatalogue.xlsx`](ThreatCatalogue/ICSThreatCatalogue%20(9).xlsx)
 
 
-               # This file
-
 
 ## Threat modelling (`threat_modelling`)
 
