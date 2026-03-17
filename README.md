@@ -55,10 +55,9 @@ Quick run:
 python threat_modelling/threat_modeller.py
 ```
 
-Note: this is an illustrative/example implementation for research and teaching. Use it in an isolated environment and with explicit authorization. See `requirements.txt` for dependencies.
 
 
-## ️ Tools
+## ️ Tools for pentesting
 
 ### 1. ModbusInjector.py
 
