@@ -69,10 +69,6 @@ Each row in the catalogue represents one threat entry. The columns are:
 - `self` means the PLC itself is compromised.
 - `target(hosts)` means **all assets hosted by the PLC** are also compromised — for example, if the PLC hosts a local HMI or runs embedded logic that controls field devices, those are affected too.
 
-### Example 2 – Red row (removed entry)
-
-A row highlighted in red in `ICSThreatCatalogue_v2_revised.xlsx` indicates a threat that was **present in v1** but **removed after reviewer feedback** (e.g., because it were at different levels of granularity). It is retained for traceability but excluded from analysis.
-
 ---
 
 ## Versioning
