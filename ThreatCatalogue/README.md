@@ -34,16 +34,6 @@ Each row in the catalogue represents one threat entry. The columns are:
 
 ---
 
-## Asset Classes Covered
-
-- **PLC** (Programmable Logic Controller) – logic manipulation, firmware attacks, mode disruption
-- **SCADA / HMI** – process manipulation, credential theft, misconfiguration
-- **Network** – Man-in-the-Middle, DoS, ransomware, ARP-based attacks
-- **Field Devices** – sensor input manipulation, physical damage, ADC attacks
-- **Robot Systems** – replay attacks, loss of control, authentication weaknesses
-
----
-
 ## Versioning
 
 | Version | File | Notes |
