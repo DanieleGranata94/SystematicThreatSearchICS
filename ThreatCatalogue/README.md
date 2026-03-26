@@ -15,6 +15,29 @@ This folder contains the ICS Threat Catalogue produced as part of a Systematic L
 
 ---
 
+## Workbook Structure (Sheets)
+
+Each `.xlsx` file is organised into the following sheets:
+
+| Sheet | Content |
+|-------|---------|
+| **Accepted** | List of papers accepted during the SLR process. Rows highlighted in **green** are papers accepted in the **first inclusion round**. The sheet also contains the **inclusion criteria** applied during the selection process. |
+| **ThreatsPerAssetType** | The main threat catalogue, organised by **asset type**. Each row is a threat entry associated with a specific ICS asset class (e.g., PLC, SCADA/HMI, Field Device, Robot). |
+| **ThreatsPerProtocol** | Threats listed by **industrial communication protocol** (e.g., Modbus, OPC-UA, Profinet, EtherNet/IP). Each row maps a threat to the protocol through which it can be exploited. |
+| **AssetTypes** | Reference list of all **asset types** involved in the SLR. Indicates which asset types are already covered by the threat modelling methodology and which are not yet addressed. |
+| **Protocols** | Reference list of all **industrial protocols** identified in the SLR. Indicates which protocols are already covered by the methodology and which remain out of scope. |
+
+---
+
+## Colour Coding
+
+| Colour | Sheet | Meaning |
+|--------|-------|---------|
+| 🟢 Green row | **Accepted** | Paper accepted in the **first inclusion round** (no borderline case). |
+| 🔴 Red row | **ThreatsPerAssetType**, **ThreatsPerProtocol** | Threat **removed** after reviewer feedback (v2 only). Kept for traceability; excluded from analysis. |
+
+---
+
 ## Catalogue Structure
 
 Each row in the catalogue represents one threat entry. The columns are:
